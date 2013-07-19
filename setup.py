@@ -8,4 +8,5 @@ setup(name='lanbo',
     author='Eric Wong',
     url='https://github.com/etdub/lanbo',
     packages=['lanbo'],
+    scripts=['bin/run_lanboweb.py']
     )

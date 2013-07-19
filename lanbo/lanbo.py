@@ -20,6 +20,8 @@ class Lanbo(object):
         self.in4 = in4
         self.en2 = en2
 
+        io.
+
         io.setup(self.in1, io.OUT)
         io.setup(self.in2, io.OUT)
         io.setup(self.en1, io.OUT)
