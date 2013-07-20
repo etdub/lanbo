@@ -7,11 +7,11 @@
     });
 
     socket.on('reconnect', function () {
-        message('System', 'Reconnected to the server');
+        console.log('System', 'Reconnected to the server');
     });
 
     socket.on('reconnecting', function () {
-        message('System', 'lost connect to server');
+        console.log('System', 'lost connect to server');
         socket.disconnect(true);
     });
 
@@ -43,5 +43,38 @@
     $("#btn-stop").click(function() {
         socket.emit('stop');
     });
+
+    // Keyboard shortcuts!
+    $(document).keypress(function(e) {
+        console.log('Keypress! ' + e.which);
+
+        // a
+        if (e.which == 97) {
+            socket.emit('left');
+        }
+
+        // d
+        if (e.which == 100) {
+            socket.emit('right');
+        }
+
+        // w
+        if(e.which == 119) {
+            socket.emit('straight');
+            socket.emit('forward', 100);
+        }
+
+        // s
+        if (e.which == 115) {
+            socket.emit('reverse', 100);
+        }
+
+        // Space
+        if (e.which == 32) {
+            socket.emit('stop');
+        }
+    });
+
+
 })();
 

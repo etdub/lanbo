@@ -15,7 +15,7 @@ for path, dirs, files in os.walk('lanbo/templates'):
       package_files.append('{0}/{1}'.format(path.replace('lanbo/', ''),file))
 
 setup(name='lanbo',
-    version='0.1',
+    version='0.2',
     description='Library to interface with L293D motor controller',
     author='Eric Wong',
     url='https://github.com/etdub/lanbo',

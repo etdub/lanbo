@@ -30,27 +30,27 @@ class LanboWeb(BaseNamespace, RoomsMixin, BroadcastMixin):
 
     def on_left(self):
         car.left()
-        self.emit('response', 'success')
+        self.log('Left!')
 
     def on_right(self):
         car.right()
-        self.emit('response', 'success')
+        self.log('Right!')
 
     def on_straight(self):
         car.straight()
-        self.emit('response', 'success')
+        self.log('Straight!')
 
     def on_forward(self, speed):
         car.forward(speed)
-        self.emit('response', 'success')
+        self.log('Forward!')
 
     def on_reverse(self, speed):
         car.reverse(speed)
-        self.emit('response', 'success')
+        self.log('Reverse!')
 
     def on_stop(self):
         car.stop()
-        self.emit('response', 'success')
+        self.log('Stop!')
 
 @app.route('/')
 def index():
