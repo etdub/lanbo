@@ -10,6 +10,10 @@ class Lanbo(object):
     """
 
     def __init__(self, en1, in1, in2, en2, in3, in4):
+        io.cleanup()
+        io.setmode(io.BCM)
+        print en1, in1, in2, en2, in3, in4
+
         # Front motor output
         self.in1 = in1
         self.in2 = in2
@@ -19,8 +23,6 @@ class Lanbo(object):
         self.in3 = in3
         self.in4 = in4
         self.en2 = en2
-
-        io.
 
         io.setup(self.in1, io.OUT)
         io.setup(self.in2, io.OUT)

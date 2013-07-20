@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 from lanbo.web import app
 from gevent import monkey
 from socketio.server import SocketIOServer

@@ -1,3 +1,6 @@
+import sys
+print sys.path
+
 # 3rd party imports
 from socketio import socketio_manage
 from socketio.namespace import BaseNamespace
@@ -7,7 +10,7 @@ from gevent import monkey
 
 from flask import Flask, Response, request, render_template, url_for, redirect
 
-from lanbo import lanbo
+import lanbo
 
 monkey.patch_all()
 
@@ -15,9 +18,9 @@ app = Flask(__name__)
 app.debug = True
 
 # Create a global Lanbo object
-car = lanbo.Lanbo()
+car = lanbo.Lanbo(21, 17, 4, 18, 23, 24)
 
-class LanboWeb(BaseNameSpace, RoomsMixin, BroadcastMixin):
+class LanboWeb(BaseNamespace, RoomsMixin, BroadcastMixin):
     def initialize(self):
         self.logger = app.logger
         self.log("Socketio session started")
