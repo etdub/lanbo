@@ -1,6 +1,11 @@
-import RPi.GPIO as io
+try:
+  import RPi.GPIO as io
+except RuntimeError:
+  # we are not on pi, so skip the error
+  io = None
 
-class Lanbo(object):
+
+class PiLanbo(object):
     """
     Simple class to control speed and direction of car using L293D motor controller
 
@@ -76,3 +81,35 @@ class Lanbo(object):
         self.pwm_en1.stop()
         self.pwm_en2.stop()
         io.cleanup()
+
+
+class MockLanbo():
+    def __init__(self, en1, in1, in2, en2, in3, in4):
+        pass
+
+    def forward(self, speed):
+        pass
+
+    def reverse(self, speed):
+        pass
+
+    def right(self, speed=None):
+        pass
+
+    def left(self, speed=None):
+        pass
+
+    def stop(self):
+        pass
+
+    def straight(self):
+        pass
+
+    def shutdown(self):
+        pass
+
+if not io:
+  Lanbo = MockLanbo
+else:
+  Lanbo = PiLanbo
+
