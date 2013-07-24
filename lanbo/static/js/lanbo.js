@@ -49,6 +49,7 @@
     var KEY_CODE_A = 65,
         KEY_CODE_D = 68,
         KEY_CODE_S = 83,
+        KEY_CODE_B = 78,
         KEY_CODE_SPACE = 32,
         KEY_CODE_W = 87;
 
@@ -60,33 +61,26 @@
     };
 
     $(document).keydown(function(e) {
-        if (e.which == KEY_CODE_A) {
-            if (left_or_right !== 'left') {
-                logKeyboard('keydown', 'a');
-                socket.emit('left');
-                left_or_right = 'left';
-            }
+        console.log(e.which);
+        if ((e.which == KEY_CODE_A) && (left_or_right !== 'left')) {
+            logKeyboard('keydown', 'a');
+            socket.emit('left');
+            left_or_right = 'left';
         }
-        if (e.which == KEY_CODE_D) {
-            if (left_or_right !== 'right') {
-                logKeyboard('keydown', 'd');
-                socket.emit('right');
-                left_or_right = 'right';
-            }
+        if ((e.which == KEY_CODE_D) && (left_or_right !== 'right')) {
+            logKeyboard('keydown', 'd');
+            socket.emit('right');
+            left_or_right = 'right';
         }
-        if(e.which == KEY_CODE_W) {
-          if (forward_or_reverse !== 'forward') {
-              logKeyboard('keydown', 'w');
-              socket.emit('forward', 100);
-              forward_or_reverse = 'forward';
-          }
+        if ((e.which == KEY_CODE_W) && (forward_or_reverse !== 'forward')) {
+            logKeyboard('keydown', 'w');
+            socket.emit('forward', 100);
+            forward_or_reverse = 'forward';
         }
-        if (e.which == KEY_CODE_S) {
-          if (forward_or_reverse !== 'reverse') {
-              logKeyboard('keydown', 's');
-              socket.emit('reverse', 100);
-              forward_or_reverse = 'reverse';
-          }
+        if ((e.which == KEY_CODE_S) && (forward_or_reverse !== 'reverse')) {
+            logKeyboard('keydown', 's');
+            socket.emit('reverse', 100);
+            forward_or_reverse = 'reverse';
         }
         if (e.which == KEY_CODE_SPACE) {
             logKeyboard('keydown', 'space');
@@ -99,7 +93,7 @@
             socket.emit('straight');
             left_or_right = 'straight';
         }
-        if(e.which == KEY_CODE_W || e.which == KEY_CODE_S) {
+        if (e.which == KEY_CODE_W || e.which == KEY_CODE_S) {
             socket.emit('stop');
             forward_or_reverse = 'stop';
         }
